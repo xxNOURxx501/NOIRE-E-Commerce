@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collection · NOIRÉ</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== NOIRÉ PRODUCTS STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0B0710;
+            color: #F5F1F7;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #F5F1F7;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #7D3C98;
+        }
+        .bg-deep {
+            background-color: #0B0710;
+        }
+        .bg-dark-purple {
+            background-color: #15101B;
+        }
+        .text-lavender {
+            color: #D1C4E9;
+        }
+        .text-soft {
+            color: #F5F1F7;
+        }
+        .accent-purple {
+            color: #7D3C98;
+        }
+        .btn-noire {
+            background-color: #564076;
+            border: none;
+            color: #F5F1F7;
+            font-weight: 400;
+            padding: 0.6rem 2rem;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+        .btn-noire:hover {
+            background-color: #7D3C98;
+            color: #F5F1F7;
+            box-shadow: 0 0 20px rgba(125, 60, 152, 0.3);
+        }
+        .nav-link {
+            color: #D1C4E9 !important;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+        .nav-link:hover {
+            color: #F5F1F7 !important;
+        }
+        .navbar-toggler {
+            border-color: #564076;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .card-noire {
+            background-color: #15101B;
+            border: none;
+            border-radius: 24px;
+            padding: 1.2rem;
+            transition: 0.2s;
+            color: #F5F1F7;
+            height: 100%;
+        }
+        .card-noire img {
+            border-radius: 16px;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-noire:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(125, 60, 152, 0.15);
+        }
+
+        /* ===== FILTER BAR (NEW DESIGN) ===== */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 0.75rem 1rem;
+            background: #15101B;
+            border-radius: 50px;
+            border: 1px solid #2A1938;
+            margin-bottom: 2rem;
+        }
+
+        /* Search - Icon toggle */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .search-btn {
+            background: transparent;
+            border: 1px solid #2A1938;
+            color: #D1C4E9;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .search-btn:hover {
+            background: #564076;
+            color: #F5F1F7;
+            border-color: #7D3C98;
+        }
+        .search-input {
+            width: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: #F5F1F7;
+            font-size: 0.9rem;
+            transition: width 0.3s ease, padding 0.3s ease;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .search-input.open {
+            width: 180px;
+            padding: 0.4rem 0.8rem;
+            background: #0B0710;
+            border: 1px solid #2A1938;
+            border-radius: 30px;
+            margin-left: 0.3rem;
+        }
+        .search-input::placeholder {
+            color: #6b5a7a;
+        }
+
+        /* Divider */
+        .filter-divider {
+            width: 1px;
+            height: 24px;
+            background: #2A1938;
+        }
+
+        /* Mood Filter */
+        .mood-badges {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .mood-badge {
+            background: transparent;
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            color: #D1C4E9;
+            font-weight: 300;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #2A1938;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .mood-badge:hover {
+            background: #2A1938;
+            color: #F5F1F7;
+        }
+        .mood-badge.active {
+            background: #564076;
+            color: #F5F1F7;
+            border-color: #7D3C98;
+        }
+
+        /* Sort Dropdown (custom) */
+        .sort-container {
+            position: relative;
+            margin-left: auto;
+        }
+        .sort-btn {
+            background: transparent;
+            border: 1px solid #2A1938;
+            color: #D1C4E9;
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+        }
+        .sort-btn:hover {
+            background: #2A1938;
+            color: #F5F1F7;
+        }
+        .sort-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s;
+        }
+        .sort-btn.open i {
+            transform: rotate(180deg);
+        }
+        .sort-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #15101B;
+            border: 1px solid #2A1938;
+            border-radius: 16px;
+            padding: 0.4rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: 0.2s;
+            z-index: 100;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+        .sort-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .sort-option {
+            padding: 0.5rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #D1C4E9;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sort-option:hover {
+            background: #2A1938;
+            color: #F5F1F7;
+        }
+        .sort-option.active {
+            background: #564076;
+            color: #F5F1F7;
+        }
+        .sort-option i {
+            font-size: 0.75rem;
+            opacity: 0;
+        }
+        .sort-option.active i {
+            opacity: 1;
+        }
+
+        /* User badge */
+        .user-badge {
+            color: #D1C4E9;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            background: #15101B;
+            border: 1px solid #2A1938;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .user-badge .crown {
+            color: #f1c40f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .filter-bar {
+                gap: 0.5rem;
+                padding: 0.6rem 0.8rem;
+                border-radius: 20px;
+            }
+            .filter-divider {
+                display: none;
+            }
+            .sort-container {
+                margin-left: 0;
+                width: 100%;
+            }
+            .sort-btn {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .sort-menu {
+                left: 0;
+                right: 0;
+            }
+            .search-input.open {
+                width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg bg-deep py-3 border-bottom border-dark">
+        <div class="container">
+            <a class="logo" href="home.html">NOIR<span>É</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+
+                    <!-- Dashboard link - only visible to admin -->
+                    <li class="nav-item" id="dashboardNav" style="display:none;">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+
+                    <!-- Cart link - hidden for admin -->
+                    <li class="nav-item" id="cartNav">
+                        <a class="nav-link" href="cart.html" id="cartLink">
+                            <i class="bi bi-bag"></i> <span id="cartCount">0</span>
+                        </a>
+                    </li>
+
+                    <!-- Auth area -->
+                    <li class="nav-item" id="authNav">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-person"></i> Login
+                        </a>
+                    </li>
+
+                    <!-- Logout button -->
+                    <li class="nav-item" id="logoutNav" style="display:none;">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+
+                    <!-- User badge -->
+                    <li class="nav-item" id="userBadgeNav" style="display:none;">
+                        <span class="user-badge" id="userBadge">
+                            <i class="bi bi-person-circle"></i>
+                            <span id="userNameDisplay">User</span>
+                            <span class="crown" id="adminCrown" style="display:none;">👑</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container py-4">
+
+        <h2 class="section-title">THE COLLECTION</h2>
+        <p class="text-lavender mb-4">Find the scent that feels like you.</p>
+
+        <!-- ===== FILTER BAR ===== -->
+        <div class="filter-bar">
+            <!-- Search -->
+            <div class="search-container">
+                <button class="search-btn" id="searchToggleBtn" title="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+                <input
+                    type="text"
+                    class="search-input"
+                    id="searchInput"
+                    placeholder="Search candles..."
+                />
+            </div>
+
+            <!-- Divider -->
+            <div class="filter-divider"></div>
+
+            <!-- Mood Filter -->
+            <div class="mood-badges" id="categoryFilter">
+                <span class="mood-badge active" data-cat="All">All</span>
+                <span class="mood-badge" data-cat="Calm">Calm</span>
+                <span class="mood-badge" data-cat="Warm">Warm</span>
+                <span class="mood-badge" data-cat="Romantic">Romantic</span>
+                <span class="mood-badge" data-cat="Fresh">Fresh</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="filter-divider"></div>
+
+            <!-- Sort Dropdown (Custom) -->
+            <div class="sort-container">
+                <button class="sort-btn" id="sortBtn">
+                    <i class="bi bi-sliders"></i>
+                    <span id="sortLabel">Default</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="sort-menu" id="sortMenu">
+                    <div class="sort-option active" data-sort="default">
+                        Default <i class="bi bi-check2"></i>
+                    </div>
+                    <div class="sort-option" data-sort="priceLow">
+                        Price: Low to High <i class="bi bi-check2"></i>
+                    </div>
+                    <div class="sort-option" data-sort="priceHigh">
+                        Price: High to Low <i class="bi bi-check2"></i>
+                    </div>
+                    <div class="sort-option" data-sort="az">
+                        Name: A to Z <i class="bi bi-check2"></i>
+                    </div>
+                    <div class="sort-option" data-sort="za">
+                        Name: Z to A <i class="bi bi-check2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="row" id="productGrid"></div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-dark-purple py-4 mt-5 border-top border-dark">
+        <div class="container text-center text-lavender small">
+            <p class="mb-0">&copy; 2026 NOIRÉ · Premium Scented Candles</p>
+            <p class="mb-0">
+                <i class="bi bi-instagram me-2"></i>
+                <i class="bi bi-pinterest me-2"></i>
+                <i class="bi bi-spotify"></i>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        // ===== NOIRÉ PRODUCTS JAVASCRIPT =====
+
+        // ----- LOAD DATA -----
+        let products = JSON.parse(localStorage.getItem('noireProducts')) || [];
+        let cart = JSON.parse(localStorage.getItem('noireCart')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('noireCurrentUser')) || null;
+
+        // ----- STATE -----
+        let currentSort = 'default';
+
+        // ----- AUTH UI -----
+        function updateAuthUI() {
+            const authNav = document.getElementById('authNav');
+            const logoutNav = document.getElementById('logoutNav');
+            const userBadgeNav = document.getElementById('userBadgeNav');
+            const dashboardNav = document.getElementById('dashboardNav');
+            const cartNav = document.getElementById('cartNav');
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const adminCrown = document.getElementById('adminCrown');
+
+            if (currentUser) {
+                authNav.style.display = 'none';
+                logoutNav.style.display = 'block';
+                userBadgeNav.style.display = 'block';
+                userNameDisplay.textContent = currentUser.name;
+
+                if (currentUser.isAdmin) {
+                    dashboardNav.style.display = 'block';
+                    cartNav.style.display = 'none';
+                    adminCrown.style.display = 'inline';
+                } else {
+                    dashboardNav.style.display = 'none';
+                    cartNav.style.display = 'block';
+                    adminCrown.style.display = 'none';
+                }
+            } else {
+                authNav.style.display = 'block';
+                logoutNav.style.display = 'none';
+                userBadgeNav.style.display = 'none';
+                dashboardNav.style.display = 'none';
+                cartNav.style.display = 'block';
+            }
+        }
+
+        // ----- CART -----
+        function updateCartCount() {
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = total;
+        }
+
+        function addToCart(productId) {
+            // Prevent admin from adding to cart
+            if (currentUser && currentUser.isAdmin) {
+                alert('Admins cannot add products to cart.');
+                return;
+            }
+
+            const p = products.find(x => x.id === productId);
+            if (!p) return;
+
+            const exist = cart.find(x => x.id === p.id);
+            if (exist) {
+                exist.quantity += 1;
+            } else {
+                cart.push({ ...p, quantity: 1 });
+            }
+
+            localStorage.setItem('noireCart', JSON.stringify(cart));
+            updateCartCount();
+            alert(p.title + ' added to cart! 🕯️');
+        }
+
+        // ----- RENDER PRODUCTS -----
+        function renderProducts(filtered = null) {
+            const grid = document.getElementById('productGrid');
+            const list = filtered || products;
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                grid.innerHTML = '<p class="text-lavender text-center py-5">No products found.</p>';
+                return;
+            }
+
+            list.forEach(p => {
+                grid.innerHTML += `
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card-noire">
+                            <img src="${p.image}" alt="${p.title}" />
+                            <h5 class="mt-2">${p.title}</h5>
+                            <p class="text-lavender small">${p.description}</p>
+                            <p class="fw-bold">$${p.price}</p>
+                            <p class="small text-lavender">${p.category}</p>
+                            <button class="btn btn-noire btn-sm add-cart" data-id="${p.id}">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // ----- FILTERS -----
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cat = document.querySelector('#categoryFilter .active')?.dataset.cat || 'All';
+
+            let filtered = products.filter(p => {
+                const matchCat = cat === 'All' || p.category === cat;
+                const matchSearch = p.title.toLowerCase().includes(search) ||
+                    p.description.toLowerCase().includes(search);
+                return matchCat && matchSearch;
+            });
+
+            // Sorting
+            if (currentSort === 'priceLow') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'priceHigh') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'az') {
+                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (currentSort === 'za') {
+                filtered.sort((a, b) => b.title.localeCompare(a.title));
+            }
+
+            renderProducts(filtered);
+        }
+
+        // ----- LOGOUT -----
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('noireCurrentUser');
+                currentUser = null;
+                alert('You have been logged out. 🕯️');
+                window.location.href = 'home.html';
+            }
+        }
+
+        // ===== SEARCH TOGGLE =====
+        const searchToggleBtn = document.getElementById('searchToggleBtn');
+        const searchInput = document.getElementById('searchInput');
+
+        searchToggleBtn.addEventListener('click', function() {
+            searchInput.classList.toggle('open');
+            if (searchInput.classList.contains('open')) {
+                setTimeout(() => searchInput.focus(), 100);
+            } else {
+                // Clear search when closing
+                searchInput.value = '';
+                applyFilters();
+            }
+        });
+
+        searchInput.addEventListener('input', applyFilters);
+
+        // Close search when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container') && searchInput.classList.contains('open')) {
+                if (searchInput.value.trim() === '') {
+                    searchInput.classList.remove('open');
+                }
+            }
+        });
+
+        // ===== SORT DROPDOWN =====
+        const sortBtn = document.getElementById('sortBtn');
+        const sortMenu = document.getElementById('sortMenu');
+        const sortLabel = document.getElementById('sortLabel');
+
+        sortBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sortMenu.classList.toggle('open');
+            sortBtn.classList.toggle('open');
+        });
+
+        // Sort options
+        document.querySelectorAll('.sort-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const sortValue = this.dataset.sort;
+                const sortText = this.textContent.trim().replace(/\s+/g, ' ');
+
+                // Update active state
+                document.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update label
+                sortLabel.textContent = sortText;
+                currentSort = sortValue;
+
+                // Close menu
+                sortMenu.classList.remove('open');
+                sortBtn.classList.remove('open');
+
+                // Apply filters
+                applyFilters();
+            });
+        });
+
+        // Close sort menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.sort-container')) {
+                sortMenu.classList.remove('open');
+                sortBtn.classList.remove('open');
+            }
+        });
+
+        // ===== MOOD FILTER =====
+        document.querySelectorAll('#categoryFilter .mood-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                document.querySelectorAll('#categoryFilter .mood-badge').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                applyFilters();
+            });
+        });
+
+        // ===== ADD TO CART =====
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-cart')) {
+                const id = parseInt(e.target.dataset.id);
+                addToCart(id);
+            }
+        });
+
+        // ===== LOGOUT =====
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            handleLogout();
+        });
+
+        // ===== INIT =====
+
+        // Check for mood filter from home page
+        const moodFilter = localStorage.getItem('noireFilterMood');
+        if (moodFilter) {
+            document.querySelectorAll('#categoryFilter .mood-badge').forEach(b => {
+                b.classList.remove('active');
+                if (b.dataset.cat === moodFilter) {
+                    b.classList.add('active');
+                }
+            });
+            localStorage.removeItem('noireFilterMood');
+        }
+
+        updateAuthUI();
+        updateCartCount();
+        applyFilters();
+
+        console.log('NOIRÉ — Find your scent.');
+    </script>
+</body>
+</html>

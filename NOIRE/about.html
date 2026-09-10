@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About · NOIRÉ</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== NOIRÉ ABOUT STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0B0710;
+            color: #F5F1F7;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #F5F1F7;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #7D3C98;
+        }
+        .bg-deep {
+            background-color: #0B0710;
+        }
+        .bg-dark-purple {
+            background-color: #15101B;
+        }
+        .text-lavender {
+            color: #D1C4E9;
+        }
+        .text-soft {
+            color: #F5F1F7;
+        }
+        .accent-purple {
+            color: #7D3C98;
+        }
+        .btn-noire {
+            background-color: #564076;
+            border: none;
+            color: #F5F1F7;
+            font-weight: 400;
+            padding: 0.6rem 2rem;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+        .btn-noire:hover {
+            background-color: #7D3C98;
+            color: #F5F1F7;
+            box-shadow: 0 0 20px rgba(125, 60, 152, 0.3);
+        }
+        .nav-link {
+            color: #D1C4E9 !important;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+        .nav-link:hover {
+            color: #F5F1F7 !important;
+        }
+        .navbar-toggler {
+            border-color: #564076;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .process-step {
+            background: #15101B;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #2A1938;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .process-step:hover {
+            border-color: #7D3C98;
+            box-shadow: 0 0 30px rgba(125, 60, 152, 0.05);
+        }
+        .process-step .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .process-arrow {
+            font-size: 2rem;
+            color: #2A1938;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .value-item {
+            background: #15101B;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 3px solid #7D3C98;
+        }
+        .user-badge {
+            color: #D1C4E9;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            background: #15101B;
+            border: 1px solid #2A1938;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .user-badge .crown {
+            color: #f1c40f;
+        }
+        .contact-link {
+            color: #D1C4E9;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-link:hover {
+            color: #7D3C98;
+        }
+        .social-icon {
+            color: #D1C4E9;
+            transition: color 0.2s, transform 0.2s;
+            display: inline-block;
+        }
+        .social-icon:hover {
+            color: #7D3C98;
+            transform: translateY(-3px);
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .process-arrow {
+                transform: rotate(90deg);
+                padding: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg bg-deep py-3 border-bottom border-dark">
+        <div class="container">
+            <a class="logo" href="home.html">NOIR<span>É</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+
+                    <!-- Dashboard link - only visible to admin -->
+                    <li class="nav-item" id="dashboardNav" style="display:none;">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+
+                    <!-- Cart link - hidden for admin -->
+                    <li class="nav-item" id="cartNav">
+                        <a class="nav-link" href="cart.html" id="cartLink">
+                            <i class="bi bi-bag"></i> <span id="cartCount">0</span>
+                        </a>
+                    </li>
+
+                    <!-- Auth area -->
+                    <li class="nav-item" id="authNav">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-person"></i> Login
+                        </a>
+                    </li>
+
+                    <!-- Logout button -->
+                    <li class="nav-item" id="logoutNav" style="display:none;">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+
+                    <!-- User badge -->
+                    <li class="nav-item" id="userBadgeNav" style="display:none;">
+                        <span class="user-badge" id="userBadge">
+                            <i class="bi bi-person-circle"></i>
+                            <span id="userNameDisplay">User</span>
+                            <span class="crown" id="adminCrown" style="display:none;">👑</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container py-4">
+
+        <section>
+            <h2 class="section-title">OUR STORY</h2>
+            <p class="fs-5 text-lavender" style="max-width:700px;">
+                NOIRÉ was created around a simple idea: a small flame can change the feeling of an entire room.
+            </p>
+        </section>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h4 class="accent-purple">OUR VISION</h4>
+                <p>To turn ordinary evenings into memorable moments.</p>
+            </div>
+            <div class="col-md-6">
+                <h4 class="accent-purple">OUR MISSION</h4>
+                <p>Creating beautifully crafted candles with scents that feel personal, warm, and timeless.</p>
+            </div>
+        </div>
+
+        <section class="mt-5">
+            <h3 class="text-lavender mb-4" style="font-family:'Playfair Display',serif;">How we create</h3>
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="icon">🕯️</div>
+                        <h5>HAND POURED</h5>
+                        <p class="small text-lavender">Each candle crafted with care</p>
+                    </div>
+                </div>
+                <div class="col-md-1 process-arrow"><i class="bi bi-arrow-right"></i></div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="icon">🌸</div>
+                        <h5>CAREFULLY SCENTED</h5>
+                        <p class="small text-lavender">Unique blends for every mood</p>
+                    </div>
+                </div>
+                <div class="col-md-1 process-arrow"><i class="bi bi-arrow-right"></i></div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="icon">✨</div>
+                        <h5>MADE FOR YOUR MOMENTS</h5>
+                        <p class="small text-lavender">Small batch, premium quality</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5">
+            <h3 class="text-lavender mb-4" style="font-family:'Playfair Display',serif;">WHY NOIRÉ?</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="value-item">
+                        <h5>Hand Poured</h5>
+                        <p class="small text-lavender">Every candle is crafted by hand with attention to detail.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="value-item">
+                        <h5>Carefully Selected Scents</h5>
+                        <p class="small text-lavender">We choose only the finest fragrances for your space.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="value-item">
+                        <h5>Minimal Design</h5>
+                        <p class="small text-lavender">Elegant, timeless aesthetic that complements any room.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="value-item">
+                        <h5>Made With Care</h5>
+                        <p class="small text-lavender">Small batch production ensures quality and consistency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION (UPDATED) ===== -->
+        <section class="mt-5 pt-3">
+            <h4 class="accent-purple mb-3">CONTACT</h4>
+            <p class="text-lavender fs-6">
+                <i class="bi bi-envelope me-1"></i>
+                <a href="mailto:contact@noire.eg" class="contact-link">contact@noire.eg</a>
+                <span class="mx-2">·</span>
+                <i class="bi bi-phone me-1"></i>
+                <a href="tel:+201205085215" class="contact-link">+20 120 508 5215</a>
+                <span class="mx-2">·</span>
+                <i class="bi bi-geo-alt me-1"></i>
+                <span>Cairo, Egypt</span>
+            </p>
+            <div class="fs-4 mt-3">
+                <a href="#" class="social-icon me-3" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-icon me-3" title="Pinterest"><i class="bi bi-pinterest"></i></a>
+                <a href="#" class="social-icon" title="Spotify"><i class="bi bi-spotify"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-dark-purple py-4 mt-5 border-top border-dark">
+        <div class="container text-center text-lavender small">
+            <p class="mb-0">&copy; 2026 NOIRÉ · Premium Scented Candles</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        // ===== NOIRÉ ABOUT JAVASCRIPT =====
+
+        let cart = JSON.parse(localStorage.getItem('noireCart')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('noireCurrentUser')) || null;
+
+        // ----- AUTH UI -----
+        function updateAuthUI() {
+            const authNav = document.getElementById('authNav');
+            const logoutNav = document.getElementById('logoutNav');
+            const userBadgeNav = document.getElementById('userBadgeNav');
+            const dashboardNav = document.getElementById('dashboardNav');
+            const cartNav = document.getElementById('cartNav');
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const adminCrown = document.getElementById('adminCrown');
+
+            if (currentUser) {
+                authNav.style.display = 'none';
+                logoutNav.style.display = 'block';
+                userBadgeNav.style.display = 'block';
+                userNameDisplay.textContent = currentUser.name;
+
+                if (currentUser.isAdmin) {
+                    dashboardNav.style.display = 'block';
+                    cartNav.style.display = 'none';
+                    adminCrown.style.display = 'inline';
+                } else {
+                    dashboardNav.style.display = 'none';
+                    cartNav.style.display = 'block';
+                    adminCrown.style.display = 'none';
+                }
+            } else {
+                authNav.style.display = 'block';
+                logoutNav.style.display = 'none';
+                userBadgeNav.style.display = 'none';
+                dashboardNav.style.display = 'none';
+                cartNav.style.display = 'block';
+            }
+        }
+
+        // ----- CART -----
+        function updateCartCount() {
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = total;
+        }
+
+        // ----- LOGOUT -----
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('noireCurrentUser');
+                currentUser = null;
+                alert('You have been logged out. 🕯️');
+                window.location.href = 'home.html';
+            }
+        }
+
+        // ----- EVENT LISTENERS -----
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            handleLogout();
+        });
+
+        // ----- INIT -----
+        updateAuthUI();
+        updateCartCount();
+
+        console.log('NOIRÉ — Our story.');
+    </script>
+</body>
+</html>
