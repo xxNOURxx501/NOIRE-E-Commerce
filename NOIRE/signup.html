@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up · NOIRÉ</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== NOIRÉ SIGNUP STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0B0710;
+            color: #F5F1F7;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .signup-wrapper {
+            width: 100%;
+            max-width: 480px;
+            padding: 1rem;
+        }
+        .signup-card {
+            background: #15101B;
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            border: 1px solid #2A1938;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #F5F1F7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.3rem;
+            letter-spacing: 3px;
+        }
+        .brand-logo span {
+            color: #7D3C98;
+        }
+        .brand-subtitle {
+            text-align: center;
+            color: #D1C4E9;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .form-control {
+            background: #0B0710;
+            border: 1px solid #2A1938;
+            color: #F5F1F7;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            background: #0B0710;
+            border-color: #7D3C98;
+            box-shadow: 0 0 0 3px rgba(125, 60, 152, 0.15);
+            color: #F5F1F7;
+        }
+        .form-control::placeholder {
+            color: #6b5a7a;
+            font-weight: 300;
+        }
+        .form-control.is-invalid {
+            border-color: #e74c6f;
+        }
+        .form-label {
+            color: #D1C4E9;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+        .btn-signup {
+            background: #564076;
+            border: none;
+            color: #F5F1F7;
+            font-weight: 500;
+            padding: 0.8rem;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+        .btn-signup:hover {
+            background: #7D3C98;
+            color: #F5F1F7;
+            box-shadow: 0 0 30px rgba(125, 60, 152, 0.25);
+            transform: translateY(-2px);
+        }
+        .auth-link {
+            color: #7D3C98;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+        .auth-link:hover {
+            color: #A1547A;
+            text-decoration: underline;
+        }
+        .text-muted-light {
+            color: #D1C4E9;
+            font-size: 0.9rem;
+        }
+        .error-message {
+            color: #e74c6f;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .password-toggle {
+            position: relative;
+        }
+        .password-toggle .toggle-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6b5a7a;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .password-toggle .toggle-icon:hover {
+            color: #D1C4E9;
+        }
+        .back-to-home {
+            display: inline-block;
+            color: #6b5a7a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+            margin-top: 1rem;
+        }
+        .back-to-home:hover {
+            color: #D1C4E9;
+        }
+        .back-to-home i {
+            margin-right: 0.5rem;
+        }
+        .password-strength {
+            height: 4px;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            background: #2A1938;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .password-strength .strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .password-strength .strength-bar.weak {
+            width: 25%;
+            background: #e74c6f;
+        }
+        .password-strength .strength-bar.medium {
+            width: 50%;
+            background: #f1c40f;
+        }
+        .password-strength .strength-bar.strong {
+            width: 75%;
+            background: #2ecc71;
+        }
+        .password-strength .strength-bar.very-strong {
+            width: 100%;
+            background: #27ae60;
+        }
+        .strength-text {
+            font-size: 0.75rem;
+            color: #6b5a7a;
+            margin-top: 0.2rem;
+        }
+        .candle-glow {
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(125, 60, 152, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .candle-glow-2 {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(125, 60, 152, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        @media (max-width: 576px) {
+            .signup-card {
+                padding: 2rem 1.5rem;
+            }
+            .brand-logo {
+                font-size: 2rem;
+            }
+            .signup-wrapper {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background glow effects -->
+    <div class="candle-glow"></div>
+    <div class="candle-glow-2"></div>
+
+    <div class="signup-wrapper">
+        <div class="signup-card">
+            <!-- Brand -->
+            <a href="NOIRE/home.html" class="brand-logo">NOIR<span>É</span></a>
+            <p class="brand-subtitle">CREATE YOUR ACCOUNT</p>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" novalidate>
+                <div class="mb-3">
+                    <label for="signupName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="signupName" placeholder="Your name" required />
+                    <div class="error-message" id="nameError">Please enter your name.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="signupEmail" placeholder="hello@noire.com" required />
+                    <div class="error-message" id="signupEmailError">Please enter a valid email address.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <div class="password-toggle">
+                        <input type="password" class="form-control" id="signupPassword" placeholder="••••••••" required minlength="6" />
+                        <button type="button" class="toggle-icon" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="strength-text" id="strengthText">Enter at least 6 characters</div>
+                    <div class="error-message" id="signupPasswordError">Password must be at least 6 characters.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="signupConfirmPassword" placeholder="••••••••" required />
+                    <div class="error-message" id="confirmPasswordError">Passwords do not match.</div>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="termsCheck" style="background-color:#0B0710; border-color:#2A1938;" required />
+                    <label class="form-check-label text-muted-light" for="termsCheck" style="font-size:0.85rem;">
+                        I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>
+                    </label>
+                    <div class="error-message" id="termsError">You must agree to the terms.</div>
+                </div>
+
+                <button type="submit" class="btn-signup">CREATE ACCOUNT</button>
+
+                <div class="text-center mt-4">
+                    <p class="text-muted-light" style="margin-bottom:0.3rem;">
+                        Already have an account?
+                        <a href="NOIRE/login.html" class="auth-link">Log in</a>
+                    </p>
+                </div>
+
+                <div class="text-center mt-2">
+                    <a href="NOIRE/home.html" class="back-to-home">
+                        <i class="bi bi-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== SIGNUP LOGIC =====
+
+        // ----- ENSURE DEFAULT ADMIN EXISTS -----
+        function ensureAdminExists() {
+            let users = JSON.parse(localStorage.getItem('noireUsers')) || [];
+            const adminExists = users.some(u => u.email === 'admin@noire.com');
+            if (!adminExists) {
+                users.push({
+                    id: Date.now(),
+                    name: 'Admin',
+                    email: 'admin@noire.com',
+                    password: 'admin123',
+                    isAdmin: true
+                });
+                localStorage.setItem('noireUsers', JSON.stringify(users));
+                console.log('✅ Default admin created: admin@noire.com / admin123');
+            }
+        }
+
+        // ----- ENSURE DEFAULT PRODUCTS EXIST -----
+        function ensureProductsExist() {
+            let products = JSON.parse(localStorage.getItem('noireProducts'));
+            if (!products || products.length === 0) {
+                const defaultProducts = [
+                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "NOIRE/images/midnight-vanilla.jpeg", category: "Warm" },
+                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "NOIRE/images/lavender-smoke.jpeg", category: "Calm" },
+                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "NOIRE/images/rose.jpeg", category: "Romantic" },
+                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "NOIRE/images/sea-salt.jpeg", category: "Fresh" },
+                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "NOIRE/images/ember.jpeg", category: "Warm" },
+                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "NOIRE/images/white-tea.jpeg", category: "Fresh" },
+                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "NOIRE/images/velvet-orchid.jpeg", category: "Romantic" },
+                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "NOIRE/images/chamomile-honey.jpeg", category: "Calm" },
+                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "NOIRE/images/smoked-cinnamon.jpeg", category: "Warm" },
+                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "NOIRE/images/rain.png", category: "Fresh" },
+                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "NOIRE/images/saffron.jpeg", category: "Romantic" },
+                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "NOIRE/images/lavender-dream.jpeg", category: "Calm" }
+                ];
+                localStorage.setItem('noireProducts', JSON.stringify(defaultProducts));
+                console.log('✅ Default products created.');
+            }
+        }
+
+        // ----- RUN INITIALIZATION -----
+        ensureAdminExists();
+        ensureProductsExist();
+
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('signupPassword');
+            const icon = this.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        });
+
+        // Password strength indicator
+        document.getElementById('signupPassword').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+
+            let strength = 0;
+            let message = '';
+
+            if (password.length >= 6) strength += 1;
+            if (password.length >= 10) strength += 1;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 1;
+            if (/\d/.test(password)) strength += 1;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
+
+            strengthBar.className = 'strength-bar';
+
+            if (password.length === 0) {
+                strengthBar.style.width = '0%';
+                strengthText.textContent = 'Enter at least 6 characters';
+                return;
+            }
+
+            if (strength <= 1) {
+                strengthBar.classList.add('weak');
+                message = 'Weak';
+            } else if (strength === 2) {
+                strengthBar.classList.add('medium');
+                message = 'Medium';
+            } else if (strength === 3 || strength === 4) {
+                strengthBar.classList.add('strong');
+                message = 'Strong';
+            } else {
+                strengthBar.classList.add('very-strong');
+                message = 'Very Strong';
+            }
+
+            strengthText.textContent = 'Password strength: ' + message;
+        });
+
+        // Handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('signupName');
+            const email = document.getElementById('signupEmail');
+            const password = document.getElementById('signupPassword');
+            const confirmPassword = document.getElementById('signupConfirmPassword');
+            const terms = document.getElementById('termsCheck');
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('signupEmailError');
+            const passwordError = document.getElementById('signupPasswordError');
+            const confirmError = document.getElementById('confirmPasswordError');
+            const termsError = document.getElementById('termsError');
+
+            let isValid = true;
+
+            // Reset errors
+            [nameError, emailError, passwordError, confirmError, termsError].forEach(el => el.classList.remove('show'));
+            [name, email, password, confirmPassword].forEach(el => el.classList.remove('is-invalid'));
+
+            // Validate name
+            if (!name.value.trim() || name.value.trim().length < 2) {
+                nameError.classList.add('show');
+                name.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailError.classList.add('show');
+                email.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                // Check if email already exists
+                const users = JSON.parse(localStorage.getItem('noireUsers')) || [];
+                if (users.some(u => u.email.toLowerCase() === email.value.trim().toLowerCase())) {
+                    emailError.textContent = 'This email is already registered. Please log in.';
+                    emailError.classList.add('show');
+                    email.classList.add('is-invalid');
+                    isValid = false;
+                }
+            }
+
+            // Validate password
+            if (!password.value.trim() || password.value.trim().length < 6) {
+                passwordError.classList.add('show');
+                password.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            // Validate confirm password
+            if (password.value.trim() !== confirmPassword.value.trim() || !confirmPassword.value.trim()) {
+                confirmError.classList.add('show');
+                confirmPassword.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            // Validate terms
+            if (!terms.checked) {
+                termsError.classList.add('show');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            // Create new user (regular user, not admin)
+            const newUser = {
+                id: Date.now(),
+                name: name.value.trim(),
+                email: email.value.trim().toLowerCase(),
+                password: password.value.trim(),
+                isAdmin: false
+            };
+
+            // Save to localStorage
+            const users = JSON.parse(localStorage.getItem('noireUsers')) || [];
+            users.push(newUser);
+            localStorage.setItem('noireUsers', JSON.stringify(users));
+
+            // Auto-login
+            localStorage.setItem('noireCurrentUser', JSON.stringify(newUser));
+
+            // Show success message
+            alert('Account created successfully! Welcome to NOIRÉ, ' + newUser.name + '! 🕯️');
+
+            // Redirect to home
+            window.location.href = 'NOIRE/home.html';
+        });
+
+        // Clear validation on input
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('is-invalid');
+                const parent = this.closest('.mb-3');
+                if (parent) {
+                    const errorEl = parent.querySelector('.error-message');
+                    if (errorEl) {
+                        errorEl.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Check if user is already logged in
+        const currentUser = JSON.parse(localStorage.getItem('noireCurrentUser'));
+        if (currentUser) {
+            console.log('Already logged in as:', currentUser.name);
+        }
+    </script>
+</body>
+</html>

@@ -421,7 +421,6 @@
 
         // ----- EVENT LISTENERS -----
 
-        // Add to cart
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('add-cart')) {
                 const id = parseInt(e.target.dataset.id);
@@ -429,7 +428,6 @@
             }
         });
 
-        // Mood badges redirect to products with filter
         document.querySelectorAll('#moodContainer .mood-badge').forEach(badge => {
             badge.addEventListener('click', function() {
                 const mood = this.dataset.mood;
@@ -438,7 +436,6 @@
             });
         });
 
-        // Logout button
         document.getElementById('logoutBtn').addEventListener('click', function(e) {
             e.preventDefault();
             handleLogout();
