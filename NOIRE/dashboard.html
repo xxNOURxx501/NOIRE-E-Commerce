@@ -216,21 +216,21 @@
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg bg-deep py-3 border-bottom border-dark">
         <div class="container">
-            <a class="logo" href="home.html">NOIR<span>É</span></a>
+            <a class="logo" href="NOIRE/home.html">NOIR<span>É</span></a>
             <span class="ms-2 text-lavender" style="font-size:0.8rem; opacity:0.7;">/ ADMIN</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Collection</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/products.html">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/dashboard.html">Dashboard</a></li>
 
                     <!-- Cart link - HIDDEN for admin (they cannot shop) -->
                     <li class="nav-item" id="cartNav" style="display:none;">
-                        <a class="nav-link" href="cart.html" id="cartLink">
+                        <a class="nav-link" href="NOIRE/cart.html" id="cartLink">
                             <i class="bi bi-bag"></i> <span id="cartCount">0</span>
                         </a>
                     </li>
@@ -368,7 +368,7 @@
                     <input class="form-control mb-2" id="pDesc" placeholder="Description" />
                     <input class="form-control mb-2" id="pPrice" type="number" placeholder="Price" />
                     <input class="form-control mb-2" id="pCategory" placeholder="Category" />
-                    <input class="form-control mb-2" id="pImage" placeholder="Image URL (e.g., images/candle.jpeg)" />
+                    <input class="form-control mb-2" id="pImage" placeholder="Image URL (e.g., NOIRE/images/candle.jpeg)" />
                     <button class="btn btn-noire w-100" id="addProductBtn">Add Product</button>
                 </div>
             </div>
@@ -425,18 +425,18 @@
             let products = JSON.parse(localStorage.getItem('noireProducts'));
             if (!products || products.length === 0) {
                 const defaultProducts = [
-                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "images/Midnight Vanilla.jpeg", category: "Warm" },
-                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "images/Lavender Smoke.jpeg", category: "Calm" },
-                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "images/Rose.jpeg", category: "Romantic" },
-                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "images/Sea Salt.jpeg", category: "Fresh" },
-                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "images/Ember.jpeg", category: "Warm" },
-                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "images/White Tea.jpeg", category: "Fresh" },
-                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "images/Velvet Orchid.jpeg", category: "Romantic" },
-                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "images/Chamomile & Honey.jpeg", category: "Calm" },
-                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "images/Smoked Cinnamon.jpeg", category: "Warm" },
-                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "images/Rain.png", category: "Fresh" },
-                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "images/Saffron.jpeg", category: "Romantic" },
-                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "images/Lavender Dream.jpeg", category: "Calm" }
+                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "NOIRE/images/Midnight Vanilla.jpeg", category: "Warm" },
+                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "NOIRE/images/Lavender Smoke.jpeg", category: "Calm" },
+                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "NOIRE/images/Rose.jpeg", category: "Romantic" },
+                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "NOIRE/images/Sea Salt.jpeg", category: "Fresh" },
+                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "NOIRE/images/Ember.jpeg", category: "Warm" },
+                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "NOIRE/images/White Tea.jpeg", category: "Fresh" },
+                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "NOIRE/images/Velvet Orchid.jpeg", category: "Romantic" },
+                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "NOIRE/images/Chamomile & Honey.jpeg", category: "Calm" },
+                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "NOIRE/images/Smoked Cinnamon.jpeg", category: "Warm" },
+                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "NOIRE/images/Rain.png", category: "Fresh" },
+                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "NOIRE/images/Saffron.jpeg", category: "Romantic" },
+                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "NOIRE/images/Lavender Dream.jpeg", category: "Calm" }
                 ];
                 localStorage.setItem('noireProducts', JSON.stringify(defaultProducts));
                 console.log('✅ Default products created.');
@@ -455,8 +455,8 @@
                         <h2 class="mt-3">Access Denied</h2>
                         <p class="text-lavender">You must be an admin to view this page.</p>
                         <p class="text-lavender small">Please login with admin credentials.</p>
-                        <a href="login.html" class="btn btn-noire mt-3">Go to Login</a>
-                        <a href="home.html" class="btn btn-outline-noire mt-3 ms-2">Return to Home</a>
+                        <a href="NOIRE/login.html" class="btn btn-noire mt-3">Go to Login</a>
+                        <a href="NOIRE/home.html" class="btn btn-outline-noire mt-3 ms-2">Return to Home</a>
                     </div>
                 </div>
             `;
@@ -577,7 +577,7 @@
             const desc = document.getElementById('pDesc').value.trim();
             const price = parseFloat(document.getElementById('pPrice').value);
             const cat = document.getElementById('pCategory').value.trim();
-            const img = document.getElementById('pImage').value.trim() || 'images/default.jpeg';
+            const img = document.getElementById('pImage').value.trim() || 'NOIRE/images/default.jpeg';
 
             if (!name || !desc || !price || !cat) {
                 alert('Please fill all fields.');
@@ -724,7 +724,7 @@
             if (confirm('Are you sure you want to logout?')) {
                 localStorage.removeItem('noireCurrentUser');
                 alert('You have been logged out. 🕯️');
-                window.location.href = 'home.html';
+                window.location.href = 'NOIRE/home.html';
             }
         });
 
