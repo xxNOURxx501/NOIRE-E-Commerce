@@ -60,7 +60,3 @@ Password: admin123
 | **Bootstrap Icons** | Iconography |
 | **Google Fonts** | Playfair Display + Poppins |
 | **Local Storage** | Data persistence |
-
----
-
-## 📁 Project Structure
