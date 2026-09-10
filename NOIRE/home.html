@@ -179,43 +179,43 @@
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg bg-deep py-3 border-bottom border-dark">
         <div class="container">
-            <a class="logo" href="home.html">NOIR<span>É</span></a>
+            <a class="logo" href="NOIRE/home.html">NOIR<span>É</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Collection</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/products.html">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/about.html">About</a></li>
 
                     <!-- Dashboard link - only visible to admin -->
                     <li class="nav-item" id="dashboardNav" style="display:none;">
-                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                        <a class="nav-link" href="NOIRE/dashboard.html">Dashboard</a>
                     </li>
 
-                    <!-- Cart link - hidden for admin, opens cart.html for regular users -->
+                    <!-- Cart link - hidden for admin -->
                     <li class="nav-item" id="cartNav">
-                        <a class="nav-link" href="cart.html" id="cartLink">
+                        <a class="nav-link" href="NOIRE/cart.html" id="cartLink">
                             <i class="bi bi-bag"></i> <span id="cartCount">0</span>
                         </a>
                     </li>
 
-                    <!-- Auth area (login link) -->
+                    <!-- Auth area -->
                     <li class="nav-item" id="authNav">
-                        <a class="nav-link" href="login.html">
+                        <a class="nav-link" href="NOIRE/login.html">
                             <i class="bi bi-person"></i> Login
                         </a>
                     </li>
 
-                    <!-- Logout button (shown when logged in) -->
+                    <!-- Logout button -->
                     <li class="nav-item" id="logoutNav" style="display:none;">
                         <a class="nav-link" href="#" id="logoutBtn">
                             <i class="bi bi-box-arrow-right"></i> Logout
                         </a>
                     </li>
 
-                    <!-- User badge showing name + admin crown -->
+                    <!-- User badge -->
                     <li class="nav-item" id="userBadgeNav" style="display:none;">
                         <span class="user-badge" id="userBadge">
                             <i class="bi bi-person-circle"></i>
@@ -238,18 +238,17 @@
                 <div class="col-lg-6">
                     <h1 class="display-1 fw-light" style="font-family:'Playfair Display',serif;">LIGHT THE NIGHT.</h1>
                     <p class="text-lavender fs-5 mt-3">Hand-poured candles created for slow evenings, quiet moments, and beautiful spaces.</p>
-                    <a href="products.html" class="btn btn-noire mt-3">EXPLORE COLLECTION</a>
+                    <a href="NOIRE/products.html" class="btn btn-noire mt-3">EXPLORE COLLECTION</a>
                 </div>
                 <div class="col-lg-6 text-center">
                     <img
-                        src="images/home.jpeg"
+                        src="NOIRE/images/home.jpeg"
                         alt="Candle"
                         class="img-fluid candle-glow"
                         style="max-width:300px; border-radius:30px; background:#2A1938; padding:10px;"
                     />
                 </div>
             </div>
-            <!-- ⬆️ الـ row مقفول هنا صح -->
 
             <!-- Featured Scents -->
             <div class="mt-5 pt-4">
@@ -276,21 +275,21 @@
                             <div class="p-4">
                                 <h3>NEW SCENTS</h3>
                                 <p>Discover our latest candle collection.</p>
-                                <a href="products.html" class="btn btn-outline-noire">Explore</a>
+                                <a href="NOIRE/products.html" class="btn btn-outline-noire">Explore</a>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="p-4">
                                 <h3>COZY NIGHTS</h3>
                                 <p>Create your perfect evening.</p>
-                                <a href="products.html" class="btn btn-outline-noire">Shop</a>
+                                <a href="NOIRE/products.html" class="btn btn-outline-noire">Shop</a>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="p-4">
                                 <h3>SPECIAL OFFER</h3>
                                 <p>Enjoy up to 20% off selected candles.</p>
-                                <a href="products.html" class="btn btn-outline-noire">View</a>
+                                <a href="NOIRE/products.html" class="btn btn-outline-noire">View</a>
                             </div>
                         </div>
                     </div>
@@ -356,7 +355,6 @@
         }
 
         function addToCart(productId) {
-            // Prevent admin from adding to cart
             if (currentUser && currentUser.isAdmin) {
                 alert('Admins cannot add products to cart.');
                 return;
@@ -388,25 +386,21 @@
             const adminCrown = document.getElementById('adminCrown');
 
             if (currentUser) {
-                // Hide login link, show logout and user badge
                 authNav.style.display = 'none';
                 logoutNav.style.display = 'block';
                 userBadgeNav.style.display = 'block';
                 userNameDisplay.textContent = currentUser.name;
 
                 if (currentUser.isAdmin) {
-                    // Admin: show dashboard, hide cart, show crown
                     dashboardNav.style.display = 'block';
                     cartNav.style.display = 'none';
                     adminCrown.style.display = 'inline';
                 } else {
-                    // Regular user: hide dashboard, show cart, hide crown
                     dashboardNav.style.display = 'none';
                     cartNav.style.display = 'block';
                     adminCrown.style.display = 'none';
                 }
             } else {
-                // Not logged in: show login, hide logout/badge/dashboard, show cart
                 authNav.style.display = 'block';
                 logoutNav.style.display = 'none';
                 userBadgeNav.style.display = 'none';
@@ -421,7 +415,7 @@
                 localStorage.removeItem('noireCurrentUser');
                 currentUser = null;
                 alert('You have been logged out. 🕯️');
-                window.location.href = 'home.html';
+                window.location.href = 'NOIRE/home.html';
             }
         }
 
@@ -440,7 +434,7 @@
             badge.addEventListener('click', function() {
                 const mood = this.dataset.mood;
                 localStorage.setItem('noireFilterMood', mood);
-                window.location.href = 'products.html';
+                window.location.href = 'NOIRE/products.html';
             });
         });
 
