@@ -205,7 +205,7 @@
     <div class="login-wrapper">
         <div class="login-card">
             <!-- Brand -->
-            <a href="NOIRE/home.html" class="brand-logo">NOIR<span>É</span></a>
+            <a href="home.html" class="brand-logo">NOIR<span>É</span></a>
             <p class="brand-subtitle">WELCOME BACK</p>
 
             <!-- Login Form -->
@@ -240,12 +240,12 @@
                 <div class="text-center mt-4">
                     <p class="text-muted-light" style="margin-bottom:0.3rem;">
                         Don't have an account?
-                        <a href="NOIRE/signup.html" class="auth-link">Create one</a>
+                        <a href="signup.html" class="auth-link">Create one</a>
                     </p>
                 </div>
 
                 <div class="text-center mt-2">
-                    <a href="NOIRE/home.html" class="back-to-home">
+                    <a href="home.html" class="back-to-home">
                         <i class="bi bi-arrow-left"></i> Back to Home
                     </a>
                 </div>
@@ -278,18 +278,18 @@
             let products = JSON.parse(localStorage.getItem('noireProducts'));
             if (!products || products.length === 0) {
                 const defaultProducts = [
-                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "NOIRE/images/midnight-vanilla.jpeg", category: "Warm" },
-                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "NOIRE/images/lavender-smoke.jpeg", category: "Calm" },
-                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "NOIRE/images/rose.jpeg", category: "Romantic" },
-                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "NOIRE/images/sea-salt.jpeg", category: "Fresh" },
-                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "NOIRE/images/ember.jpeg", category: "Warm" },
-                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "NOIRE/images/white-tea.jpeg", category: "Fresh" },
-                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "NOIRE/images/velvet-orchid.jpeg", category: "Romantic" },
-                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "NOIRE/images/chamomile-honey.jpeg", category: "Calm" },
-                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "NOIRE/images/smoked-cinnamon.jpeg", category: "Warm" },
-                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "NOIRE/images/rain.png", category: "Fresh" },
-                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "NOIRE/images/saffron.jpeg", category: "Romantic" },
-                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "NOIRE/images/lavender-dream.jpeg", category: "Calm" }
+                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "images/midnight-vanilla.jpeg", category: "Warm" },
+                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "images/lavender-smoke.jpeg", category: "Calm" },
+                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "images/rose.jpeg", category: "Romantic" },
+                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "images/sea-salt.jpeg", category: "Fresh" },
+                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "images/ember.jpeg", category: "Warm" },
+                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "images/white-tea.jpeg", category: "Fresh" },
+                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "images/velvet-orchid.jpeg", category: "Romantic" },
+                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "images/chamomile-honey.jpeg", category: "Calm" },
+                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "images/smoked-cinnamon.jpeg", category: "Warm" },
+                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "images/rain.png", category: "Fresh" },
+                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "images/saffron.jpeg", category: "Romantic" },
+                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "images/lavender-dream.jpeg", category: "Calm" }
                 ];
                 localStorage.setItem('noireProducts', JSON.stringify(defaultProducts));
                 console.log('✅ Default products created.');
@@ -371,7 +371,7 @@
                 alert('Welcome back, ' + foundUser.name + '! 🕯️');
 
                 // Redirect to home
-                window.location.href = 'NOIRE/home.html';
+                window.location.href = 'home.html';
             } else {
                 // Check if email exists
                 const emailExists = users.some(u => u.email.toLowerCase() === email.value.trim().toLowerCase());
