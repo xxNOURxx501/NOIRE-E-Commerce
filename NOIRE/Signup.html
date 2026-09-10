@@ -241,7 +241,7 @@
     <div class="signup-wrapper">
         <div class="signup-card">
             <!-- Brand -->
-            <a href="home.html" class="brand-logo">NOIR<span>É</span></a>
+            <a href="NOIRE/home.html" class="brand-logo">NOIR<span>É</span></a>
             <p class="brand-subtitle">CREATE YOUR ACCOUNT</p>
 
             <!-- Sign Up Form -->
@@ -292,12 +292,12 @@
                 <div class="text-center mt-4">
                     <p class="text-muted-light" style="margin-bottom:0.3rem;">
                         Already have an account?
-                        <a href="login.html" class="auth-link">Log in</a>
+                        <a href="NOIRE/login.html" class="auth-link">Log in</a>
                     </p>
                 </div>
 
                 <div class="text-center mt-2">
-                    <a href="home.html" class="back-to-home">
+                    <a href="NOIRE/home.html" class="back-to-home">
                         <i class="bi bi-arrow-left"></i> Back to Home
                     </a>
                 </div>
@@ -311,24 +311,46 @@
         // ----- ENSURE DEFAULT ADMIN EXISTS -----
         function ensureAdminExists() {
             let users = JSON.parse(localStorage.getItem('noireUsers')) || [];
-
             const adminExists = users.some(u => u.email === 'admin@noire.com');
-
             if (!adminExists) {
-                const adminUser = {
+                users.push({
                     id: Date.now(),
                     name: 'Admin',
                     email: 'admin@noire.com',
                     password: 'admin123',
                     isAdmin: true
-                };
-                users.push(adminUser);
+                });
                 localStorage.setItem('noireUsers', JSON.stringify(users));
                 console.log('✅ Default admin created: admin@noire.com / admin123');
             }
         }
 
+        // ----- ENSURE DEFAULT PRODUCTS EXIST -----
+        function ensureProductsExist() {
+            let products = JSON.parse(localStorage.getItem('noireProducts'));
+            if (!products || products.length === 0) {
+                const defaultProducts = [
+                    { id: 1, title: "Midnight Vanilla", description: "Vanilla · Amber · Musk", price: 24, image: "NOIRE/images/Midnight Vanilla.jpeg", category: "Warm" },
+                    { id: 2, title: "Lavender Smoke", description: "Lavender · Cedar · Vanilla", price: 26, image: "NOIRE/images/Lavender Smoke.jpeg", category: "Calm" },
+                    { id: 3, title: "Dark Rose", description: "Rose · Oud · Amber", price: 28, image: "NOIRE/images/Rose.jpeg", category: "Romantic" },
+                    { id: 4, title: "Sea Salt & Sage", description: "Sea salt · Sage · Citrus", price: 22, image: "NOIRE/images/Sea Salt.jpeg", category: "Fresh" },
+                    { id: 5, title: "Ember & Oak", description: "Smoke · Oak · Vanilla", price: 27, image: "NOIRE/images/Ember.jpeg", category: "Warm" },
+                    { id: 6, title: "White Tea & Mint", description: "White tea · Mint · Lime", price: 21, image: "NOIRE/images/White Tea.jpeg", category: "Fresh" },
+                    { id: 7, title: "Velvet Orchid", description: "Orchid · Plum · Sandalwood", price: 30, image: "NOIRE/images/Velvet Orchid.jpeg", category: "Romantic" },
+                    { id: 8, title: "Chamomile & Honey", description: "Chamomile · Honey · Oat", price: 23, image: "NOIRE/images/Chamomile & Honey.jpeg", category: "Calm" },
+                    { id: 9, title: "Smoked Cinnamon", description: "Cinnamon · Clove · Orange", price: 25, image: "NOIRE/images/Smoked Cinnamon.jpeg", category: "Warm" },
+                    { id: 10, title: "Cypress & Rain", description: "Cypress · Rain · Moss", price: 22, image: "NOIRE/images/Rain.png", category: "Fresh" },
+                    { id: 11, title: "Saffron & Rose", description: "Saffron · Rose · Leather", price: 29, image: "NOIRE/images/Saffron.jpeg", category: "Romantic" },
+                    { id: 12, title: "Lavender Dream", description: "Lavender · Vanilla · Tonka", price: 24, image: "NOIRE/images/Lavender Dream.jpeg", category: "Calm" }
+                ];
+                localStorage.setItem('noireProducts', JSON.stringify(defaultProducts));
+                console.log('✅ Default products created.');
+            }
+        }
+
+        // ----- RUN INITIALIZATION -----
         ensureAdminExists();
+        ensureProductsExist();
 
         // Toggle password visibility
         document.getElementById('togglePassword').addEventListener('click', function() {
@@ -478,7 +500,7 @@
             alert('Account created successfully! Welcome to NOIRÉ, ' + newUser.name + '! 🕯️');
 
             // Redirect to home
-            window.location.href = 'home.html';
+            window.location.href = 'NOIRE/home.html';
         });
 
         // Clear validation on input
