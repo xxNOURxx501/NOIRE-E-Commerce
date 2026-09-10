@@ -156,31 +156,31 @@
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg bg-deep py-3 border-bottom border-dark">
         <div class="container">
-            <a class="logo" href="home.html">NOIR<span>É</span></a>
+            <a class="logo" href="NOIRE/home.html">NOIR<span>É</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Collection</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/products.html">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NOIRE/about.html">About</a></li>
 
                     <!-- Dashboard link - only visible to admin -->
                     <li class="nav-item" id="dashboardNav" style="display:none;">
-                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                        <a class="nav-link" href="NOIRE/dashboard.html">Dashboard</a>
                     </li>
 
                     <!-- Cart link - hidden for admin -->
                     <li class="nav-item" id="cartNav">
-                        <a class="nav-link" href="cart.html" id="cartLink">
+                        <a class="nav-link" href="NOIRE/cart.html" id="cartLink">
                             <i class="bi bi-bag"></i> <span id="cartCount">0</span>
                         </a>
                     </li>
 
                     <!-- Auth area -->
                     <li class="nav-item" id="authNav">
-                        <a class="nav-link" href="login.html">
+                        <a class="nav-link" href="NOIRE/login.html">
                             <i class="bi bi-person"></i> Login
                         </a>
                     </li>
@@ -285,7 +285,7 @@
             </div>
         </section>
 
-        <!-- ===== CONTACT SECTION (UPDATED) ===== -->
+        <!-- ===== CONTACT SECTION ===== -->
         <section class="mt-5 pt-3">
             <h4 class="accent-purple mb-3">CONTACT</h4>
             <p class="text-lavender fs-6">
@@ -369,7 +369,7 @@
                 localStorage.removeItem('noireCurrentUser');
                 currentUser = null;
                 alert('You have been logged out. 🕯️');
-                window.location.href = 'home.html';
+                window.location.href = 'NOIRE/home.html';
             }
         }
 
